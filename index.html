@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rohith Thota</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Rohith Thota – data and automation engineer in Erlangen. KNIME, Power Platform, Python, SQL and applied AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow reading column; the career path is drawn as a pipeline of stages, projects as a plain list. */
+:root{
+  --bg:#f5f7f8; --surface:#ffffff; --ink:#14202b; --muted:#5b6772; --line:#dde3e8;
+  --accent:#1f5fa8; --accent-soft:#e3edf8;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1418; --surface:#161d23; --ink:#e7edf2; --muted:#94a1ac; --line:#26313a;
+  --accent:#7fb2ec; --accent-soft:#1a2a3b; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0f1418; --surface:#161d23; --ink:#e7edf2; --muted:#94a1ac; --line:#26313a;
+  --accent:#7fb2ec; --accent-soft:#1a2a3b; color-scheme:dark }
+
+*{box-sizing:border-box} body{margin:0} [hidden]{display:none!important}
+body{background:var(--bg); color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.65;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.wrap{max-width:680px; margin:0 auto; padding-block:3.5rem 2.5rem; display:flex; flex-direction:column; gap:3.5rem}
+a{color:var(--accent); text-underline-offset:3px; text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:3px}
+h1,h2{font-family:var(--display); text-wrap:balance; margin:0; line-height:1.1}
+h1{font-size:clamp(2.4rem, 7vw, 3.4rem); font-weight:700; letter-spacing:-.02em}
+h2{font-size:1.35rem; font-weight:500; display:flex; align-items:baseline; gap:.6rem}
+h2 span{font-family:var(--mono); font-size:.75rem; color:var(--muted); font-weight:400; letter-spacing:.04em}
+p{margin:0}
+.mono{font-family:var(--mono); font-size:.8rem; letter-spacing:.03em; color:var(--muted)}
+section{display:flex; flex-direction:column; gap:1rem}
+
+/* header */
+header{display:flex; flex-direction:column; gap:1.1rem}
+.status{display:inline-flex; align-items:center; gap:.55rem; font-family:var(--mono); font-size:.8rem; color:var(--muted)}
+.dot{width:8px; height:8px; border-radius:50%; background:#2e9d62; box-shadow:0 0 0 4px color-mix(in srgb, #2e9d62 20%, transparent)}
+.lede{font-size:1.15rem; max-width:34em}
+nav{display:flex; flex-wrap:wrap; gap:.5rem; font-family:var(--mono); font-size:.85rem}
+nav a{padding:.3rem .8rem; border:1px solid var(--line); border-radius:999px; text-decoration:none; color:var(--muted)}
+nav a:hover{color:var(--ink); border-color:var(--muted)}
+nav a[aria-current="page"]{background:var(--ink); border-color:var(--ink); color:var(--bg)}
+.view{display:flex; flex-direction:column; gap:3.5rem}
+.hobbies{display:flex; flex-wrap:wrap; gap:.5rem}
+.hobby{font-family:var(--mono); font-size:.8rem; padding:.3rem .7rem; border-radius:999px; border:1px solid var(--line); background:var(--surface)}
+
+/* pipeline */
+.pipe{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:0; margin-top:.4rem}
+.stage{position:relative; padding:0 .6rem 0 0}
+.stage::before{content:""; display:block; height:2px; background:var(--line); margin:7px 0 .9rem}
+.stage::after{content:""; position:absolute; top:0; left:0; width:16px; height:16px; border-radius:50%;
+  background:var(--bg); border:2px solid var(--accent)}
+.stage.now::after{background:var(--accent)}
+.stage b{display:block; font-family:var(--display); font-weight:500; font-size:1rem; line-height:1.25}
+.stage small{display:block; font-family:var(--mono); font-size:.72rem; color:var(--muted); margin-top:.2rem}
+@media (max-width:560px){
+  .pipe{grid-template-columns:1fr; gap:1rem}
+  .stage{padding-left:1.8rem}
+  .stage::before{position:absolute; left:7px; top:18px; bottom:-1rem; width:2px; height:auto; margin:0}
+  .stage:last-child::before{display:none}
+}
+
+/* work + projects */
+.list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column}
+.item{display:grid; grid-template-columns:7.5rem minmax(0,1fr); gap:1rem; padding:1.1rem 0; border-top:1px solid var(--line)}
+.item:last-child{border-bottom:1px solid var(--line)}
+.item h3{margin:0 0 .25rem; font-family:var(--display); font-weight:500; font-size:1.08rem; line-height:1.3}
+.item p{color:var(--muted); font-size:.97rem}
+.item .when{padding-top:.2rem}
+.tags{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.6rem}
+.tag{font-family:var(--mono); font-size:.72rem; padding:.12rem .5rem; border-radius:4px; background:var(--accent-soft); color:var(--ink)}
+.badge{font-family:var(--mono); font-size:.7rem; padding:.1rem .45rem; border:1px solid var(--accent); color:var(--accent); border-radius:4px; margin-left:.4rem; vertical-align:2px; white-space:nowrap}
+@media (max-width:560px){ .item{grid-template-columns:1fr; gap:.3rem} }
+
+/* numbers */
+.wins{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1rem}
+.win{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:1rem}
+.win strong{display:block; font-family:var(--display); font-size:1.7rem; font-weight:700; color:var(--accent); line-height:1.1; font-variant-numeric:tabular-nums}
+.win span{font-size:.88rem; color:var(--muted); line-height:1.4; display:block; margin-top:.35rem}
+@media (max-width:560px){ .wins{grid-template-columns:1fr} }
+
+/* contact + footer */
+.contact{display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; font-family:var(--mono); font-size:.9rem}
+.copy{font:inherit; font-size:.75rem; background:none; border:1px solid var(--line); color:var(--muted); border-radius:4px; padding:.05rem .45rem; cursor:pointer; margin-left:.35rem}
+.copy:hover{color:var(--ink); border-color:var(--muted)}
+footer{display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; padding-top:1.2rem; border-top:1px solid var(--line)}
+.toggle{font-family:var(--mono); font-size:.8rem; background:var(--surface); color:var(--ink); border:1px solid var(--line); border-radius:999px; padding:.35rem .85rem; cursor:pointer}
+@media (prefers-reduced-motion: no-preference){ a, .toggle, .copy{transition:color .15s, border-color .15s, text-decoration-thickness .15s} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="status"><i class="dot" aria-hidden="true"></i>Erlangen, Germany · open to full-time roles</div>
+    <h1>Rohith Thota</h1>
+    <p class="lede">I find the slow, manual parts of a business and turn them into data pipelines and small apps that people actually use. Mostly with Python, SQL, KNIME and the Power Platform, and more and more with LLMs.</p>
+    <nav aria-label="Pages">
+      <a href="#about" data-view="about">about</a><a href="#projects" data-view="projects">projects</a>
+    </nav>
+  </header>
+
+  <div class="view" id="view-about">
+  <section>
+    <h2>About <span>whoami</span></h2>
+    <p>I'm from Andhra Pradesh. I studied electronics in Tirupati, and spent three years at Tata Consultancy Services in Bangalore pulling supply-chain data from six systems into one reporting pipeline. In 2023 I moved to Germany for a master's in Information and Communication Technology at FAU Erlangen-Nürnberg, which I finished in October 2026 with a thesis on out-of-distribution detection.</p>
+    <p>Since 2024 I've been a working student at Siemens Healthineers, automating finance workflows. The part I enjoy most is the moment a job that took someone three hours now takes them less than one.</p>
+    <p>Outside work you'll find me on a badminton court or playing cricket with friends. I also like hackathons, and I'm learning German step by step. I'm at A2 and taking a B1 course right now.</p>
+    <div class="hobbies" aria-label="Hobbies"><span class="hobby">🏸 badminton</span><span class="hobby">🏏 cricket</span><span class="hobby">hackathons</span><span class="hobby">learning German</span></div>
+
+    <div class="pipe" aria-label="Path so far">
+      <div class="stage"><b>B.Tech ECE</b><small>Tirupati · 2016–20</small></div>
+      <div class="stage"><b>Software Engineer, TCS</b><small>Bangalore · 2020–23</small></div>
+      <div class="stage"><b>M.Sc. ICT, FAU</b><small>Erlangen · 2023–26</small></div>
+      <div class="stage now"><b>Siemens Healthineers</b><small>Erlangen · 2024–now</small></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Work <span>what I've shipped</span></h2>
+    <div class="wins">
+      <div class="win"><strong>~70%</strong><span>less time to draft a cost proposal, about 3 h down to under 1 h</span></div>
+      <div class="win"><strong>~15 h</strong><span>of manual data entry removed every week with a Power Apps intake</span></div>
+      <div class="win"><strong>30+</strong><span>HR and management users on a Power BI role-profiling tool</span></div>
+    </div>
+    <ul class="list">
+      <li class="item">
+        <span class="when mono">2024 – now</span>
+        <div>
+          <h3>Working Student, Data Engineering &amp; Automation · Siemens Healthineers</h3>
+          <p>I own a KNIME data app that turns use-case inputs into cost estimates and a finished PowerPoint/PDF proposal. I also moved a month-end finance workflow to SharePoint (about half the manual steps gone) and built Power Automate flows on the Microsoft Graph API. Two "Thank You" awards in 2026.</p>
+          <div class="tags"><span class="tag">KNIME</span><span class="tag">Power Apps</span><span class="tag">Power Automate</span><span class="tag">Power BI</span><span class="tag">SharePoint</span><span class="tag">Python</span></div>
+        </div>
+      </li>
+      <li class="item">
+        <span class="when mono">2020 – 2023</span>
+        <div>
+          <h3>Software Engineer, Supply Chain Systems · Tata Consultancy Services</h3>
+          <p>Brought data from six systems into one reporting pipeline and cut report turnaround by three days. Replaced manual Excel work with Power BI dashboards, SQL reports and Power Apps workflows.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Pandas</span></div>
+        </div>
+      </li>
+    </ul>
+    <p><a href="#projects" data-view="projects">See my projects →</a></p>
+  </section>
+  </div>
+
+  <div class="view" id="view-projects" hidden>
+  <section>
+    <h2>Projects <span>built for fun and for hackathons</span></h2>
+    <ul class="list">
+      <li class="item">
+        <span class="when mono">Jun 2026</span>
+        <div>
+          <h3><a href="https://github.com/RohithThota97/R_chatbot" target="_blank" rel="noopener">Voice AI chatbot</a><span class="badge">1st place · Graphathon</span></h3>
+          <p>I led the team. It's a GraphRAG voice agent that answers from a Neo4j knowledge graph built out of PDFs, with a fast realtime mode and a step-by-step mode that chains up to ten tool calls.</p>
+          <div class="tags"><span class="tag">Neo4j</span><span class="tag">LiveKit</span><span class="tag">GPT-4o</span><span class="tag">Docling</span></div>
+        </div>
+      </li>
+      <li class="item">
+        <span class="when mono">Nov 2026</span>
+        <div>
+          <h3><a href="https://github.com/RohithThota97/Hodor" target="_blank" rel="noopener">Hodor</a></h3>
+          <p>A team project at Healthcare Hackathon Bayern: one board for every security warning on a hospital's medical devices. I built the update planner in dbt, which fits patches around booked procedures, plus a flu-wave forecast from RKI data.</p>
+          <div class="tags"><span class="tag">dbt</span><span class="tag">Exasol</span><span class="tag">Plotly Dash</span><span class="tag">AWS</span></div>
+        </div>
+      </li>
+      <li class="item">
+        <span class="when mono">Oct 2026</span>
+        <div>
+          <h3><a href="https://github.com/RohithThota97/shs-hack-2026-vla-pipeline" target="_blank" rel="noopener">Robot learning pipeline</a></h3>
+          <p>A team project at a robotics hackathon. I built the MLOps backbone (versioned data, evaluation, quality gates) and fine-tuned a vision-language-action model for a simulated two-arm robot in Isaac Sim.</p>
+          <div class="tags"><span class="tag">SmolVLA</span><span class="tag">LeRobot</span><span class="tag">LoRA</span><span class="tag">Isaac Sim</span></div>
+        </div>
+      </li>
+      <li class="item">
+        <span class="when mono">2025</span>
+        <div>
+          <h3><a href="https://github.com/RohithThota97/Modern-Hopfield-Networks-for-Out-of-Distribution-Detection-in-Semantic-Segmentation" target="_blank" rel="noopener">Master's thesis</a></h3>
+          <p>Modern Hopfield networks for spotting unknown objects in road scenes, pixel by pixel. It beat leading baselines by 2.5% AUROC on three benchmarks.</p>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">DeepLabv3+</span></div>
+        </div>
+      </li>
+      <li class="item">
+        <span class="when mono">in progress</span>
+        <div>
+          <h3>Healthcare IoT data platform</h3>
+          <p>I'm designing a streaming lakehouse for patient vital signs, with data contracts and drift monitoring. It's still in the planning stage.</p>
+          <div class="tags"><span class="tag">Kafka</span><span class="tag">PySpark</span><span class="tag">dbt</span></div>
+        </div>
+      </li>
+    </ul>
+  </section>
+  </div>
+
+  <section>
+    <h2>Contact <span>say hello</span></h2>
+    <p>I'm looking for full-time roles in data engineering, automation and applied AI, anywhere in Europe. If that sounds like your team, I'd like to hear from you.</p>
+    <div class="contact">
+      <span><span id="mail">rohiththota79@gmail.com</span><button class="copy" id="copy-mail" type="button">copy</button></span>
+      <a href="https://www.linkedin.com/in/rohiththota79/" target="_blank" rel="noopener">linkedin</a>
+      <a href="https://github.com/RohithThota97" target="_blank" rel="noopener">github</a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="mono">© 2026 Rohith Thota · made in Erlangen</span>
+    <button class="toggle" id="theme-toggle" type="button">dark mode</button>
+  </footer>
+</div>
+
+<script>
+(function(){
+  function show(){
+    var v = location.hash === '#projects' ? 'projects' : 'about';
+    document.getElementById('view-about').hidden = v !== 'about';
+    document.getElementById('view-projects').hidden = v !== 'projects';
+    document.querySelectorAll('nav a').forEach(function(a){
+      if(a.dataset.view === v) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+    document.title = v === 'projects' ? 'Projects · Rohith Thota' : 'Rohith Thota';
+  }
+  show();
+  window.addEventListener('hashchange', function(){ show(); window.scrollTo(0,0); });
+})();
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme-toggle');
+  function isDark(){ var t=root.getAttribute('data-theme'); return t ? t==='dark' : window.matchMedia('(prefers-color-scheme: dark)').matches; }
+  function label(){ btn.textContent = isDark() ? 'light mode' : 'dark mode'; }
+  try{ var s=localStorage.getItem('theme'); if(s) root.setAttribute('data-theme', s); }catch(e){}
+  label();
+  btn.addEventListener('click', function(){
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next); }catch(e){}
+    label();
+  });
+  var cb=document.getElementById('copy-mail');
+  cb.addEventListener('click', function(){
+    var t=document.getElementById('mail').textContent;
+    function sel(){ var r=document.createRange(); r.selectNodeContents(document.getElementById('mail')); var s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+    if(navigator.clipboard){ navigator.clipboard.writeText(t).then(function(){ cb.textContent='copied'; setTimeout(function(){cb.textContent='copy'},1500); }, sel); } else sel();
+  });
+})();
+</script>
+</body>
+</html>
