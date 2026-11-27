@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hodor – 3D Hospital View</title>
+<meta name="description" content="Interactive 3D hospital building from Hodor (Healthcare Hackathon Bayern 2026): medical devices coloured by security-warning priority.">
+<style>
+  :root { --bg:#F6F7F9; --surface:#FFFFFF; --text:#1F2328; --muted:#5F6670; --line:#E3E6EA; --accent:#1D4E89; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.5 Inter,"Segoe UI",system-ui,sans-serif; }
+  header { max-width:1200px; margin:0 auto; padding:24px 16px 8px; }
+  header a.back { color:var(--accent); text-decoration:none; font-size:14px; }
+  h1 { margin:8px 0 4px; font-size:26px; }
+  .sub { color:var(--muted); margin:0 0 12px; }
+  .links a { color:var(--accent); margin-right:16px; font-weight:600; text-decoration:none; }
+  main { max-width:1200px; margin:0 auto; padding:8px 16px 32px; }
+  .controls { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 12px; align-items:center; }
+  .controls button { border:1px solid var(--line); background:var(--surface); border-radius:6px; padding:6px 12px; font:500 13px inherit; cursor:pointer; color:var(--text); }
+  .controls button.on { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .controls label { font-size:13px; color:var(--muted); margin-left:8px; }
+  .tg3d { position:relative; height:640px; background:var(--surface); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  .tg3d canvas { display:block; width:100%; height:100%; cursor:grab; touch-action:none; }
+  .tg3d-tip { position:absolute; display:none; pointer-events:none; background:#2B2F36; color:#fff; font-size:12px; padding:5px 8px; border-radius:4px; max-width:320px; z-index:2; }
+  .tg3d-reset { position:absolute; top:10px; right:10px; border:1px solid var(--line); background:var(--surface); color:var(--text); border-radius:6px; padding:5px 12px; font:500 13px inherit; cursor:pointer; }
+  .tg3d-hint { position:absolute; left:12px; bottom:10px; font-size:12px; color:var(--muted); }
+  .legend { display:flex; flex-wrap:wrap; gap:14px; margin:12px 0; font-size:13px; }
+  .dot { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+  #panel { margin-top:12px; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:12px 14px; font-size:14px; display:none; }
+  .note { color:var(--muted); font-size:13px; margin-top:16px; }
+  @media (max-width:700px){ .tg3d{height:60vh;min-height:340px;} .tg3d-hint{display:none;} h1{font-size:21px;} }
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="../">← rohiththota97.github.io</a>
+  <h1>Hodor – 3D hospital view</h1>
+  <p class="sub">Healthcare Hackathon Bayern 2026 (team project). Every connected medical device in a hospital, coloured by how urgent its open security warning is.</p>
+  <div class="links"><a href="https://github.com/RohithThota97/Hodor">Code on GitHub</a></div>
+</header>
+<main>
+  <div class="controls" id="floors"></div>
+  <div class="legend">
+    <span><span class="dot" style="background:#C62828"></span>P1 – act within 24 h</span>
+    <span><span class="dot" style="background:#F08C00"></span>P2 – this week</span>
+    <span><span class="dot" style="background:#636363"></span>P3 – planned</span>
+    <span><span class="dot" style="background:#2E7D32"></span>Solved</span>
+    <span><span class="dot" style="background:#BDBDBD"></span>Nothing to do</span>
+  </div>
+  <div id="tg3d" class="tg3d"></div>
+  <div id="panel"></div>
+  <p class="note">Demo snapshot with the project's synthetic device inventory (19 devices, 3 floors). The warning levels shown here are a fixed example; in the live app they come from the dbt models on Exasol. Building, floor plans and people are made up for the demo. 3D people: Quaternius (CC0).</p>
+</main>
+<script type="importmap">{"imports": {"three": "./assets/three.module.min.js"}}</script>
+<script>
+  // the 3D module reports clicks through Dash; on this static page we show the machine's details instead
+  window.dash_clientside = { set_props: function (id, p) {
+    var s = window.__scene, m = null;
+    (s.floors || []).forEach(function (f) { f.rooms.forEach(function (r) { r.machines.forEach(function (x) { if (x.id === p.data.id) m = Object.assign({ room: r.name, floor: f.name }, x); }); }); });
+    var el = document.getElementById('panel'); if (!m) return;
+    el.style.display = 'block';
+    el.textContent = m.tip + '  (' + m.room + ', ' + m.floor + ')';
+  } };
+</script>
+<script type="module">
+  import './assets/tg3d.js';
+  const scene = await (await fetch('./scene.json')).json();
+  window.__scene = scene;
+  const names = ['ALL'].concat(scene.floors.slice().reverse().map(f => f.name));
+  const bar = document.getElementById('floors');
+  function draw(sel) {
+    scene.selected = sel;
+    [...bar.children].forEach(b => b.classList.toggle('on', b.dataset.f === sel));
+    window.TG3D.render('tg3d', scene);
+  }
+  names.forEach(n => { const b = document.createElement('button'); b.dataset.f = n; b.textContent = n === 'ALL' ? 'All floors' : n; b.onclick = () => draw(n); bar.appendChild(b); });
+  draw('ALL');
+</script>
+</body>
+</html>

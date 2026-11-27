@@ -1,0 +1,261 @@
+{
+ "floors": [
+  {
+   "name": "Ground floor",
+   "index": 0,
+   "rooms": [
+    {
+     "name": "Emergency",
+     "color": "#CFE3EF",
+     "off": false,
+     "machines": [
+      {
+       "id": "US-01",
+       "type": "ultrasound",
+       "level": "P4",
+       "shown": true,
+       "offline": false,
+       "tip": "Ultrasound (Emergency) - Nothing to do - medium criticality"
+      }
+     ]
+    },
+    {
+     "name": "Radiology",
+     "color": "#D4EAD5",
+     "off": false,
+     "machines": [
+      {
+       "id": "RAD-01",
+       "type": "imaging_workstation",
+       "level": "P3",
+       "shown": true,
+       "offline": false,
+       "tip": "IntelliSpace Portal server - P3 - planned - medium criticality"
+      },
+      {
+       "id": "PACS-01",
+       "type": "pacs",
+       "level": "P2",
+       "shown": true,
+       "offline": false,
+       "tip": "PACS archive - P2 - this week - high criticality"
+      },
+      {
+       "id": "PACS-02",
+       "type": "pacs",
+       "level": "P4",
+       "shown": true,
+       "offline": false,
+       "tip": "PACS web viewer - Nothing to do - medium criticality"
+      },
+      {
+       "id": "CT-01",
+       "type": "ct",
+       "level": "DONE",
+       "shown": true,
+       "offline": false,
+       "tip": "CT scanner - Solved - every warning decided - high criticality"
+      },
+      {
+       "id": "MRI-01",
+       "type": "mri",
+       "level": "P4",
+       "shown": true,
+       "offline": false,
+       "tip": "MRI scanner - Nothing to do - high criticality"
+      }
+     ]
+    },
+    {
+     "name": "Pharmacy",
+     "color": "#E9DFC9",
+     "off": false,
+     "machines": [
+      {
+       "id": "PHARM-01",
+       "type": "pharmacy_compounder",
+       "level": "P3",
+       "shown": true,
+       "offline": false,
+       "tip": "IV compounder (Pharmacy) - P3 - planned - medium criticality"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "1st floor",
+   "index": 1,
+   "rooms": [
+    {
+     "name": "OR 1",
+     "color": "#DCD7E8",
+     "off": false,
+     "machines": [
+      {
+       "id": "CARM-01",
+       "type": "mobile_c_arm",
+       "level": "P2",
+       "shown": true,
+       "offline": false,
+       "tip": "C-arm 1 (OR 1) - P2 - this week - high criticality"
+      }
+     ]
+    },
+    {
+     "name": "OR 2",
+     "color": "#F0D9D0",
+     "off": false,
+     "machines": [
+      {
+       "id": "CARM-03",
+       "type": "mobile_c_arm",
+       "level": "DONE",
+       "shown": true,
+       "offline": false,
+       "tip": "C-arm 3 (OR 2) - Solved - every warning decided - high criticality"
+      }
+     ]
+    },
+    {
+     "name": "OR 3",
+     "color": "#D8E6E0",
+     "off": false,
+     "machines": [
+      {
+       "id": "CARM-02",
+       "type": "mobile_c_arm",
+       "level": "P1",
+       "shown": true,
+       "offline": false,
+       "tip": "C-arm 2 (OR 3) - P1 - act within 24 h - high criticality"
+      }
+     ]
+    },
+    {
+     "name": "OR 5",
+     "color": "#E6E2D3",
+     "off": false,
+     "machines": [
+      {
+       "id": "CARM-05",
+       "type": "mobile_c_arm",
+       "level": "P4",
+       "shown": true,
+       "offline": false,
+       "tip": "C-arm 5 (OR 5) - Nothing to do - high criticality"
+      }
+     ]
+    },
+    {
+     "name": "Trauma OR",
+     "color": "#D2DDE8",
+     "off": false,
+     "machines": [
+      {
+       "id": "CARM-04",
+       "type": "mobile_c_arm",
+       "level": "P4",
+       "shown": true,
+       "offline": false,
+       "tip": "C-arm 4 (Trauma OR) - Nothing to do - high criticality"
+      }
+     ]
+    },
+    {
+     "name": "Cath Lab",
+     "color": "#E8D6DF",
+     "off": false,
+     "machines": [
+      {
+       "id": "ANGIO-01",
+       "type": "interventional_xray",
+       "level": "P1",
+       "shown": true,
+       "offline": false,
+       "tip": "Angiography suite (Cath Lab) - P1 - act within 24 h - high criticality"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "2nd floor",
+   "index": 2,
+   "rooms": [
+    {
+     "name": "ICU",
+     "color": "#DFE8CF",
+     "off": false,
+     "machines": [
+      {
+       "id": "INF-01",
+       "type": "infusion_gateway",
+       "level": "P4",
+       "shown": true,
+       "offline": false,
+       "tip": "Infusion gateway (ICU) - Nothing to do - high criticality"
+      },
+      {
+       "id": "INF-02",
+       "type": "infusion_pump",
+       "level": "P1",
+       "shown": true,
+       "offline": false,
+       "tip": "Infusion pump PC unit (ICU bed 4) - P1 - act within 24 h - high criticality - life-sustaining"
+      },
+      {
+       "id": "MON-01",
+       "type": "patient_monitor",
+       "level": "P3",
+       "shown": true,
+       "offline": false,
+       "tip": "Patient monitor (ICU bed 4) - P3 - planned - high criticality"
+      },
+      {
+       "id": "VENT-01",
+       "type": "ventilator",
+       "level": "DONE",
+       "shown": true,
+       "offline": false,
+       "tip": "Ventilator (ICU bed 7) - Solved - every warning decided - high criticality - life-sustaining"
+      }
+     ]
+    },
+    {
+     "name": "Cardiology",
+     "color": "#E3E3E3",
+     "off": false,
+     "machines": [
+      {
+       "id": "TELE-01",
+       "type": "patient_telemetry",
+       "level": "P2",
+       "shown": true,
+       "offline": false,
+       "tip": "Telemetry receiver (Cardiology) - P2 - this week - high criticality"
+      }
+     ]
+    },
+    {
+     "name": "Ward 4B",
+     "color": "#D9E2EC",
+     "off": false,
+     "machines": [
+      {
+       "id": "MON-02",
+       "type": "patient_monitor",
+       "level": "P4",
+       "shown": true,
+       "offline": false,
+       "tip": "Patient monitor (Ward 4B) - Nothing to do - medium criticality"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "selected": "ALL",
+ "blink": true,
+ "people": true
+}
